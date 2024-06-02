@@ -8,6 +8,7 @@ export async function POST(request: Request) {
 
 	try {
 		const { username, email, password } = await request.json();
+		
 		const existingUserVerifiedByUsername = await UserModel.findOne({
 			username,
 			isVerified: true,
@@ -64,7 +65,8 @@ export async function POST(request: Request) {
 		}
 
 		//send verification email
-		const emailResponse = await sendEmailVerificationEmail(email,password,verifyCode)
+		const emailResponse = await sendEmailVerificationEmail(username,email,verifyCode)
+		
 		if(!emailResponse.success){
 			return Response.json({
 				success : false,
@@ -80,7 +82,7 @@ export async function POST(request: Request) {
 		console.error("error registering user", error);
 		return Response.json(
 			{
-				success: true,
+				success: false,
 				message: "Error registering user",
 			},
 			{
