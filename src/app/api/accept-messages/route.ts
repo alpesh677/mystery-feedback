@@ -43,10 +43,12 @@ export async function POST(request: Request) {
 			);
 		}
 
+		
 		return Response.json(
 			{
 				success: true,
 				message: "Message acceptance status updated successfully",
+				updatedUser
 			},
 			{ status: 200 },
 		);
@@ -100,7 +102,7 @@ export async function GET(request : Request) {
         return Response.json(
             {
                 success : true,
-                isAcceptingMessagee : foundUser.isAcceptingMessage
+                isAcceptingMessage : foundUser.isAcceptingMessage
             },
             {
                 status : 200
