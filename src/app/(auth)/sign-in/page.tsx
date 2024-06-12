@@ -17,7 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-const signInForm = () => {
+const SignInForm = () => {
 	const router = useRouter();
 
 	const form = useForm<z.infer<typeof signInSchema>>({
@@ -106,4 +106,4 @@ const signInForm = () => {
 	);
 };
 
-export default signInForm;
+export default SignInForm;

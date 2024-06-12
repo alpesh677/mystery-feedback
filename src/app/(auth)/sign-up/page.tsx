@@ -23,7 +23,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 
-function page() {
+function SignUp() {
 	const { toast } = useToast();
 	const router = useRouter();
 	const [username, setUsername] = useState("");
@@ -214,7 +214,4 @@ function page() {
 	);
 }
 
-export default page;
-function setIsSubmitting(arg0: boolean) {
-	throw new Error("Function not implemented.");
-}
+export default SignUp;

@@ -1,4 +1,5 @@
-"use client";
+'use client'
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {
@@ -33,7 +34,7 @@ const parseStringMessages = (messageString: string): string[] => {
 	return messageString.split(specialChar);
 };
 
-export default function page() {
+export default function SendMessage() {
 	const params = useParams<{ username: string }>();
 	const username = params.username;
 

@@ -18,7 +18,7 @@ import { useParams, useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
-const verifyAccount = () => {
+const VerifyAccount = () => {
 	const router = useRouter();
 	const params = useParams();
 	const { toast } = useToast();
@@ -87,4 +87,4 @@ const verifyAccount = () => {
 	);
 };
 
-export default verifyAccount;
+export default VerifyAccount;
