@@ -22,6 +22,11 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
+import { signIn } from "next-auth/react";
+import Image from "next/image";
+import googleSvg from "../../../../public/google.svg";
+import githubSvg from "../../../../public/github-mark.svg"
+
 
 function SignUp() {
 	const { toast } = useToast();
@@ -94,6 +99,18 @@ function SignUp() {
 				variant: "destructive",
 			});
 			setIsSubmitting(false);
+		}
+	};
+
+	const [errorMessage, setErrorMessage] = useState("");
+
+	const handleSignIn = async (provider:string) => {
+		const result = await signIn(provider,{ redirect: false });
+
+		if (!result) {
+			setErrorMessage("User already exists with this email.");
+		} else {
+			setErrorMessage("");
 		}
 	};
 
@@ -198,6 +215,29 @@ function SignUp() {
 						</Button>
 					</form>
 				</Form>
+				<Button
+					onClick={() => signIn("google")}
+					className="mt-4 w-full"
+				>
+					<Image
+						src={googleSvg}
+						alt="googlesvg"
+						className="scale-50"
+						onClick={() => signIn("google")}
+					></Image> Google
+				</Button>
+				<Button
+					onClick={() => handleSignIn("github")}
+					className="mt-4 w-full"
+				>
+					<Image
+						src={githubSvg}
+						alt="githubsvg"
+						className="scale-50"
+						onClick={() => handleSignIn("github")}
+					></Image> Github
+				</Button>
+				{errorMessage && <p className="text-red-600">{errorMessage}</p>}
 				<div className="text-center mt-4">
 					<p>
 						Already a member?{" "}
