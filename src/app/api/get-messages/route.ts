@@ -26,9 +26,9 @@ export async function GET(request: Request) {
 			{ $group: { _id: "$_id", messages: { $push: "$messages" } } },
 		]).exec();
 
-		if (!user) {
+		if (!user || user.length == 0) {
 			return Response.json(
-				{ message: "User not found", success: false },
+				{ message: "No Message to display", success: false },
 				{ status: 404 },
 			);
 		}

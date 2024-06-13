@@ -63,6 +63,10 @@ export const authOptions: NextAuthOptions = {
 			clientId: process.env.GITHUB_CLIENT_ID!,
 			clientSecret: process.env.GITHUB_CLIENT_SECRET!,
 		}),
+		TwitterProvider({
+			clientId: process.env.X_CLIENT_ID!,
+			clientSecret: process.env.X_CLIENT_SECRET!,
+		}),
 	],
 	callbacks: {
 		async jwt({ token, user, account, profile }) {
@@ -75,7 +79,7 @@ export const authOptions: NextAuthOptions = {
 
 			if (
 				(account?.provider === "google" ||
-					account?.provider === "github") &&
+					account?.provider === "github" || account?.provider === "twitter") &&
 				profile
 			) {
 				const { email } = profile;
@@ -110,11 +114,11 @@ export const authOptions: NextAuthOptions = {
 		async signIn({ account, profile }) {
 			if (
 				(account?.provider === "google" ||
-					account?.provider === "github") &&
+					account?.provider === "github" ||  account?.provider === "twitter") &&
 				profile
 			) {
 				const { email, name } = profile;
-				console.log("Github profile : ", profile);
+				// console.log("Github profile : ", profile);
 				if (email?.endsWith("@gmail.com")) {
 					try {
 						await dbConnect();

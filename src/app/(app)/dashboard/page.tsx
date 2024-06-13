@@ -32,7 +32,7 @@ function UserDashboard() {
 		resolver: zodResolver(AcceptMessageSchema),
 	});
 
-	const { register, watch, setValue,control } = form;
+	const { register, watch, setValue, control } = form;
 	const acceptMsg = watch("acceptMessages");
 
 	// console.log(acceptMessages)
@@ -47,7 +47,10 @@ function UserDashboard() {
 			setValue("acceptMessages", response.data.isAcceptingMessage);
 		} catch (error) {
 			const axiosError = error as AxiosError<ApiResponse>;
-			console.log("Error in accept message : ", axiosError.response?.data.message);
+			console.log(
+				"Error in accept message : ",
+				axiosError.response?.data.message,
+			);
 			toast({
 				title: "Error",
 				description:
@@ -79,13 +82,15 @@ function UserDashboard() {
 				}
 			} catch (error) {
 				const axiosError = error as AxiosError<ApiResponse>;
-				console.log("Error in fetch messages : ", axiosError.response?.data.message);
+				console.log(
+					"Error in fetch messages : ",
+					axiosError.response?.data.message,
+				);
 				toast({
-					title: "error",
 					description:
 						axiosError.response?.data.message ??
 						"Failed to fetch messages",
-					variant: "destructive",
+					variant: "default",
 				});
 			} finally {
 				setIsLoading(false);
@@ -100,7 +105,7 @@ function UserDashboard() {
 
 		fetchMessages();
 		fetchAcceptMessages();
-	}, [session,setValue,fetchAcceptMessages,fetchMessages]);
+	}, [session, setValue, fetchAcceptMessages, fetchMessages]);
 
 	const handleSwithChange = async () => {
 		try {
@@ -111,9 +116,9 @@ function UserDashboard() {
 				},
 			);
 
-			console.log(response.data.isAcceptingMessage)
+			console.log(response.data.isAcceptingMessage);
 
-			setValue("acceptMessages",  response.data.isAcceptingMessage);
+			setValue("acceptMessages", response.data.isAcceptingMessage);
 
 			toast({
 				title: response.data.message,
@@ -159,7 +164,7 @@ function UserDashboard() {
 					<input
 						type="text"
 						value={profileUrl}
-						disabled 
+						disabled
 						className="input border-input w-full p-2 mr-2"
 					/>
 
