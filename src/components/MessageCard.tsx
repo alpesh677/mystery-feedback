@@ -51,8 +51,8 @@ function MessageCard({ message, onMessageDelete }: MessageCardProps) {
 					<CardTitle>{message.content}</CardTitle>
 					<AlertDialog>
 						<AlertDialogTrigger asChild>
-                            <Button variant={"destructive"}>
-                                <X className="w-5 h-5"/>
+                            <Button className="p-2 h-8 w-10" variant={"destructive"}>
+                                <X className="h-5 w-5"/>
                             </Button>
                         </AlertDialogTrigger>
 						<AlertDialogContent>
@@ -72,7 +72,7 @@ function MessageCard({ message, onMessageDelete }: MessageCardProps) {
 						</AlertDialogContent>
 					</AlertDialog>
 				</div>
-                <div className="text-sm">
+                <div className="text-sm pt-3">
                     {dayjs(message.createdAt).format('MMM DD, YYYY hh:mm A')};
                 </div>
 			</CardHeader>

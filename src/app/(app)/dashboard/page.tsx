@@ -13,8 +13,10 @@ import axios, { AxiosError } from "axios";
 import { Loader2, RefreshCcw } from "lucide-react";
 import { User } from "next-auth";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 import React, { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import dashboard from "../../../../public/Visual data-pana.svg"
 
 function UserDashboard() {
 	const [messages, setMessages] = useState<Message[]>([]);
@@ -155,7 +157,22 @@ function UserDashboard() {
 
 	return (
 		<div className="my-8 mx-4 md:mx-4 lg:mx-auto p-6 bg-white rounded w-full max-w-6xl">
-			<h1 className="text-4xl font-bold mb-4">User Dashboard</h1>
+			<div className="flex lg:items-center justify-between max-md:flex-col">
+				<div>
+					<p className="text-2xl font-semibold text-black">
+						Hello, <span className="italic font-bold">{username}</span>
+					</p>
+					<p className="text-sm text-gray-500 font-semibold">Welcome to </p>
+					<h1 className="text-4xl font-bold mb-4 mt-3 text-darker-turquoise">User Dashboard</h1>
+				</div>
+				<Image
+					src={dashboard}
+					width={250}
+					height={250}
+					alt="Illustration"
+					className="lg:mr-32 max-md:ml-5"
+				/>
+			</div>
 			<div className="mb-4">
 				<h2 className="text-lg font-semibold mb-2">
 					Copy Your Unique Link

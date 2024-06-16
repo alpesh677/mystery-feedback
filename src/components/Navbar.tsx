@@ -14,7 +14,7 @@ const Navbar = () => {
 		<nav className="p-4 md:p-6 shadow-md bg-gray-900 text-white">
 			<div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
 				<a href="#" className="text-xl font-bold mb-4 md:mb-0">
-					True Feedback
+					Mystery Feedback
 				</a>
 				{session ? (
 					<>
@@ -30,14 +30,24 @@ const Navbar = () => {
 						</Button>
 					</>
 				) : (
+					<div className="space-x-3">
 					<Link href="/sign-in">
 						<Button
-							className="w-full md:w-auto "
-							variant={"ghost"}
+							className="w-full md:w-auto text-black"
+							variant={"outline"}
 						>
 							Login
 						</Button>
 					</Link>
+					<Link href="/sign-up">
+						<Button
+							className="w-full md:w-auto text-black"
+							variant={"outline"}
+						>
+							Signup
+						</Button>
+					</Link>
+					</div>
 				)}
 			</div>
 		</nav>
