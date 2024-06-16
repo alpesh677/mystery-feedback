@@ -1,3 +1,23 @@
+Mystery Feedback is an innovative application designed to facilitate honest and anonymous communication. By allowing users to send and receive messages without revealing their identities, this app empowers individuals to share candid feedback and genuine opinions. Whether you’re seeking constructive criticism, heartfelt confessions, or simply a way to express your thoughts freely, Mystery Feedback ensures complete anonymity and security.
+
+Getting Started
+To get started with Mystery Feedback, follow these steps:
+
+Clone the repository: git clone https://github.com/alpesh677/mystery-feedback.git
+Navigate to the project directory: cd mystery-feedback
+Install the necessary dependencies: npm install
+Start the development server: npm start
+
+
+Contributing
+We welcome contributions from the community! To contribute, please follow these steps:
+
+Fork the repository.
+Create a new branch: git checkout -b feature-name
+Make your changes and commit them: git commit -m 'Add some feature'
+Push to the branch: git push origin feature-name
+Open a pull request.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
