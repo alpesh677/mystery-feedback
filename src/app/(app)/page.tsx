@@ -149,7 +149,7 @@ export default function Home() {
 					</div>
 				</section>
 				<section className="flex flex-col md:flex-row items-center justify-center h-[60vh] bg-gray-100 dark:bg-gray-900">
-					<div className="md:w-1/2 flex justify-center">
+					<div className="w-1/2 md:w-1/2 flex justify-center">
 						<Image
 							src={innovation}
 							width={400}
@@ -158,7 +158,7 @@ export default function Home() {
 							className="max-w-full h-auto"
 						/>
 					</div>
-					<div className="md:w-1/2 px-8 md:px-12 lg:px-16 space-y-6">
+					<div className="w-full md:w-1/2 px-8 md:px-12 lg:px-16 space-y-6">
 						<h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-gray-50">
 							Key Features
 						</h2>
@@ -232,8 +232,8 @@ export default function Home() {
 					</div>
 				</section>
 				<footer className="bg-black text-white dark:bg-gray-800 py-6 px-4 md:px-6">
-					<div className="container flex flex-col md:flex-row justify-between items-center">
-						<p className="text-white dark:text-gray-400 text-sm">
+					<div className="container flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+						<p className="text-white dark:text-gray-400 text-sm text-center md:text-left">
 							&copy; {year} Mystery Feedback. All rights reserved.
 						</p>
 						<nav className="flex gap-4 md:gap-6 text-sm">
