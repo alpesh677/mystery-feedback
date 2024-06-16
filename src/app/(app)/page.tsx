@@ -36,7 +36,7 @@ export default function Home() {
 							<br />
 							<div>
 								<p className="text-center text-3xl font-semibold mb-4">
-									Get Started Today!
+									Get Started Today
 								</p>
 								<p className="font-light text-base m-3">
 									Empower yourself with candid feedback and
@@ -113,7 +113,7 @@ export default function Home() {
 										3. Generate Your Feedback Link
 									</div>
 									<p className="text-gray-500 dark:text-gray-400">
-										Copy the generated 'public link' from
+										Copy the generated public link from
 										your dashboard.
 									</p>
 								</div>
@@ -122,7 +122,7 @@ export default function Home() {
 										4. Enable Feedback Reception
 									</div>
 									<p className="text-gray-500 dark:text-gray-400">
-										Turn on 'Accepting messages' to start
+										Turn on Accepting messages to start
 										receiving feedback.
 									</p>
 								</div>
