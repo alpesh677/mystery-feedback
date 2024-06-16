@@ -28,7 +28,7 @@ import { toast } from "@/components/ui/use-toast";
 const specialChar = "||";
 
 const intialMessageString =
-	"What's your favourite movie? || Do you have any pets? || what's your dream job?";
+	"What's a childhood memory that brings a smile to your face?  ||  What's an unconventional but satisfying way you spend your free time? || What's a skill you're eager to learn or improve? ";
 
 const parseStringMessages = (messageString: string): string[] => {
 	return messageString.split(specialChar);
@@ -104,7 +104,7 @@ export default function SendMessage() {
 	};
 
 	return (
-		<div className="container my-8 p-6 bg-white rounded max-w-xl">
+		<div className="container mx-auto my-8 p-6 bg-white rounded max-w-xl">
 			<h1 className="text-4xl font-bold mb-6 text-center">
 				Public Profile Link
 			</h1>
@@ -161,7 +161,7 @@ export default function SendMessage() {
 					<CardHeader>
 						<h3 className="text-xl font-semibold">Messages</h3>
 					</CardHeader>
-					<CardContent className="w-full flex flex-col space-y-4">
+					<CardContent className="max-w-fit flex flex-col space-y-4 items-center justify-center">
 						{error ? (
 							<p className="text-red-500">{error.message}</p>
 						) : (
@@ -170,7 +170,7 @@ export default function SendMessage() {
 									<Button
 										key={index}
 										variant={"outline"}
-										className="mb-2 w-full"
+										className="mb-2 max-w-fit"
 										onClick={() =>
 											handleMessageCLick(message)
 										}
@@ -193,7 +193,7 @@ export default function SendMessage() {
 			<Separator className="my-6" />
 			<div className="text-center">
 				<div className="mb-4">Get Your Message Board</div>
-				<Link href={"sign-up"}>
+				<Link href={"/sign-up"}>
 					<Button>Create Your Account</Button>
 				</Link>
 			</div>
