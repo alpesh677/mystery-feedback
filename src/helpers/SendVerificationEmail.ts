@@ -1,6 +1,6 @@
 import nodemailer from "nodemailer";
-import VerificationEmail from "../../emails/VerificationEmail";
 import { ApiResponse } from "@/types/ApiResponse";
+import VerificationEmail from "../../emails/VerificationEmail";
 
 interface VerificationEmailProps {
 	username: string;
@@ -110,13 +110,7 @@ function generateVerificationEmail({
 	`;
 }
 
-const transporter = nodemailer.createTransport({
-	service: "gmail",
-	auth: {
-		user: process.env.SMTP_USER,
-		pass: process.env.SMTP_PASS,
-	},
-});
+
 
 export async function sendEmailVerificationEmail(
 	username: string,
@@ -124,6 +118,13 @@ export async function sendEmailVerificationEmail(
 	verifyCode: string,
 ): Promise<ApiResponse> {
 	try {
+		const transporter = nodemailer.createTransport({
+			service: "gmail",
+			auth: {
+				user: process.env.SMTP_USER,
+				pass: process.env.SMTP_PASS,
+			},
+		});
 		console.log("this is properties:", { username, email, verifyCode });
 
 		const emailContent = generateVerificationEmail({
@@ -131,7 +132,7 @@ export async function sendEmailVerificationEmail(
 			otp: verifyCode,
 		});
 		const info = await transporter.sendMail({
-			from: "MystertFeedback@gmail.com",
+			from: "mysteryfeedback4@gmail.com",
 			to: email,
 			subject: "Mystery feedback Verification Code",
 			html: emailContent,
