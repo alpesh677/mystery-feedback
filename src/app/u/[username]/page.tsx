@@ -25,6 +25,8 @@ import axios, { AxiosError } from "axios";
 import { ApiResponse } from "@/types/ApiResponse";
 import { toast } from "@/components/ui/use-toast";
 import message from "../../../../public/Typing-rafiki.svg";
+import message2 from "../../../../public/undraw_mail_re_duel.svg";
+
 import Image from "next/image";
 
 const specialChar = "||";
@@ -137,7 +139,7 @@ export default function SendMessage() {
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel>
-										Send Anonymous Message to @{username}
+										Send Anonymous Message to <span className="font-bold">@{username}</span>
 									</FormLabel>
 									<FormControl>
 										<Textarea

@@ -15,8 +15,7 @@ export async function middleware(request: NextRequest) {
         (
             path.startsWith('/sign-in') ||
             path.startsWith('/sign-up') ||
-            path.startsWith('verify') ||
-            path === "/"
+            path.startsWith('verify')
         )
     ){
         return NextResponse.redirect(new URL("/dashboard", request.url));
@@ -32,7 +31,6 @@ export async function middleware(request: NextRequest) {
 // See "Matching Paths" below to learn more
 export const config = {
 	matcher: [
-        '/',
         '/sign-in',
         '/sign-up',
         '/dashboard/:path*',

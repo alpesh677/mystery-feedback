@@ -13,21 +13,31 @@ const Navbar = () => {
 	return (
 		<nav className="p-4 md:p-6 shadow-md bg-gray-900 text-white">
 			<div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
-				<a href="#" className="text-xl font-bold mb-4 md:mb-0">
+				<Link href="/" className="text-xl font-bold mb-4 md:mb-0">
 					Mystery Feedback
-				</a>
+				</Link>
 				{session ? (
 					<>
 						<span className="mr-4">
 							Welcome, {user?.username || user?.email}
 						</span>
-						<Button
-							onClick={() => signOut()}
-							className="w-full md:w-auto bg-slate-100 text-black"
-							variant={"outline"}
-						>
-							Logout
-						</Button>
+						<div className="sm:space-x-1 space-y-5">
+							<Button
+								onClick={() => signOut()}
+								className="w-full md:w-auto bg-slate-100 text-black"
+								variant={"outline"}
+							>
+								Logout
+							</Button>
+							<Link href="/dashboard">
+								<Button
+									className="w-full md:w-auto text-black m-3"
+									variant={"outline"}
+								>
+									Dashboard
+								</Button>
+							</Link>
+						</div>
 					</>
 				) : (
 					<div className="sm:space-x-3 space-y-5">

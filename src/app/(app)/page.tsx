@@ -9,7 +9,7 @@ import {
 	CarouselNext,
 } from "@/components/ui/carousel";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import connectedWorld from "../../../public/Connected world.svg"
+import connectedWorld from "../../../public/Connected world.svg";
 import websiteCreator from "../../../public/Website Creator.svg";
 import innovation from "../../../public/Innovation-pana.svg";
 import Autoplay from "embla-carousel-autoplay";
@@ -25,7 +25,7 @@ export default function Home() {
 				<section className="flex items-center justify-center px-4 py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
 					<div className="container grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
 						<div className="space-y-4">
-							<h1 className="text-5xl font-bold tracking-tighter sm:text-5xl md:text-6xl">
+							<h1 className="text-5xl font-bold tracking-tight sm:text-5xl md:text-6xl">
 								Mystery Feedback
 							</h1>
 							<p className="text-gray-700 dark:text-gray-400 text-lg md:text-xl">
@@ -113,8 +113,8 @@ export default function Home() {
 										3. Generate Your Feedback Link
 									</div>
 									<p className="text-gray-500 dark:text-gray-400">
-										Copy the generated public link from
-										your dashboard.
+										Copy the generated public link from your
+										dashboard.
 									</p>
 								</div>
 								<div className="grid gap-2">
@@ -182,8 +182,6 @@ export default function Home() {
 											Complete Anonymity
 										</CardHeader>
 										<CardContent className="text-gray-600 dark:text-gray-400">
-											Ensure privacy and honest feedback
-											with fully anonymous messaging.
 											Users can share their thoughts
 											without revealing their identities.
 										</CardContent>
@@ -191,7 +189,7 @@ export default function Home() {
 								</CarouselItem>
 								<CarouselItem>
 									<div className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
-										<CardHeader className="text-2xl font-bold text-gray-900 dark:text-gray-50">
+										<CardHeader className="text-xl font-bold text-gray-900 dark:text-gray-50">
 											User-Friendly Dashboard
 										</CardHeader>
 										<CardContent className="text-gray-600 dark:text-gray-400">
@@ -246,7 +244,7 @@ export default function Home() {
 							</Link>
 							<Link
 								href="https://github.com/alpesh677"
-                                target="_blank"
+								target="_blank"
 								className="text-white dark:text-gray-400  dark:hover:text-gray-50 transition-colors"
 							>
 								<svg
@@ -261,7 +259,7 @@ export default function Home() {
 								</svg>
 							</Link>
 							<Link
-                            target="_blank"
+								target="_blank"
 								href="https://x.com/alpesh_baria677"
 								className="text-white dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-50 transition-colors"
 								prefetch={false}
