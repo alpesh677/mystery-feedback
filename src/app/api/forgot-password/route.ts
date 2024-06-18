@@ -7,7 +7,7 @@ export async function POST(request: Request) {
 
 	try {
         const {email} = await request.json();
-
+        console.log(email)
         if(!email){
             return Response.json({
                 success : false,
