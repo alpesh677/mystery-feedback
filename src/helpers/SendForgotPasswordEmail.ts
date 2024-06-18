@@ -2,7 +2,7 @@ import nodemailer from "nodemailer";
 import { ApiResponse } from "@/types/ApiResponse";
 import {generateForgotPasswordEmail} from "../../emails/forgotPasswordEmail"
 
-export async function sendEmailVerificationEmail(
+export async function SendForgotPasswordEmail(
 	username: string,
 	email: string,
 	verifyCode: string,
@@ -15,7 +15,7 @@ export async function sendEmailVerificationEmail(
 				pass: process.env.SMTP_PASS,
 			},
 		});
-		console.log("this is properties:", { username, email, verifyCode });
+		// console.log("this is properties:", { username, email, verifyCode });
 
         const emailContent = generateForgotPasswordEmail({
             username,
@@ -23,7 +23,7 @@ export async function sendEmailVerificationEmail(
         })
 		
 		const info = await transporter.sendMail({
-			from: "mysteryfeedback4@gmail.com",
+			from: process.env.SMTP_USER,
 			to: email,
 			subject: "Forgot Password OTP",
 			html: emailContent,

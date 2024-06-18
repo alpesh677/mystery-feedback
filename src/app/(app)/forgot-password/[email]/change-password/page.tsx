@@ -52,8 +52,15 @@ export default function ChangePassword() {
 				throw new Error("Password and confirm Password do not match");
 			}
 
-			const response = await axios.patch("/api/change-password");
+			const response = await axios.patch("/api/change-password",{
+				email : params.email,
+				password : data.password
+			});
 			if (response.status === 200) {
+				toast({
+					title : "password changed successfully",
+					variant : "default"
+				})
 				router.push("/sign-in");
 			}
 		} catch (error) {

@@ -36,8 +36,12 @@ export default function ForgotPassword() {
 	async function onSubmit(data: z.infer<typeof emailSchema>) {
 		try {
 			const response = await axios.post("/api/forgot-password", data);
-			console.log(response);
-			if (response.data.success) {
+			
+			if (response.status === 200) {
+				toast({
+					title : "OTP sent successfully",
+					variant : "default"
+				})
 				router.push(`/forgot-password/${data.email}`);
 			}
 		} catch (error) {

@@ -45,7 +45,7 @@ export function generateForgotPasswordEmail({
 			h1 {
 			  font-size: 24px;
 			  font-weight: 500;
-			  color: #1f1f1f;
+			  color: white;
 			  margin-top: 0;
 			}
 			p {
@@ -53,7 +53,7 @@ export function generateForgotPasswordEmail({
 			  font-weight: 500;
 			  margin-top: 17px;
 			  letter-spacing: 0.56px;
-			  color:#1f1f1f;
+			  color:white;
 			}
 			.otp {
 			  font-size: 40px;
