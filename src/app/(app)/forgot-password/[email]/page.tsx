@@ -25,7 +25,7 @@ import enterOtp from "../../../../../public/Enter OTP-pana.svg";
 import * as z from "zod";
 import Image from "next/image";
 
-export default function page() {
+export default function ForgotPasswordOTP() {
 	const router = useRouter();
 	const params = useParams();
 	const { toast } = useToast();
