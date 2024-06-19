@@ -20,9 +20,13 @@ import Image from "next/image";
 import googleSvg from "../../../../public/google.svg";
 import githubSvg from "../../../../public/github.svg";
 import { useState } from "react";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
 
 const SignInForm = () => {
 	const router = useRouter();
+	const [togglePassword, setTogglePassword] = useState(false)
+
 
 	const form = useForm<z.infer<typeof signInSchema>>({
 		resolver: zodResolver(signInSchema),
@@ -67,10 +71,10 @@ const SignInForm = () => {
 
 
 	return (
-		<div className="flex justify-center items-center min-h-screen bg-gray-200">
-			<div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
+		<div className="flex justify-center items-center min-h-screen bg-gray-200 dark:dark:bg-[#181818]">
+			<div className="w-full max-w-md p-8 space-y-8 dark:bg-[#212121] bg-white rounded-lg shadow-md">
 				<div className="text-center">
-					<h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
+					<h1 className="text-4xl font-extrabold dark:text-sky-500 tracking-tight lg:text-5xl mb-6">
 						Welcome Back to True Feedback
 					</h1>
 					<p className="mb-4">
@@ -88,7 +92,7 @@ const SignInForm = () => {
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel>Email/Username</FormLabel>
-									<Input {...field} />
+									<Input {...field} className="dark:bg-gray-300" />
 									<FormMessage />
 								</FormItem>
 							)}
@@ -99,11 +103,21 @@ const SignInForm = () => {
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel>Password</FormLabel>
-									<Input type="password" {...field} />
+									<Input className="dark:bg-gray-300" type={togglePassword ? "text" : "password"} 
+									{...field} />
 									<FormMessage />
 								</FormItem>
 							)}
 						/>
+						<div className="flex items-center space-x-2">
+							<Checkbox
+								id="show-password"
+								onClick={()=>(
+									setTogglePassword(!togglePassword)
+								)}
+							/>
+							<Label htmlFor="show-password">Show Password {" "}</Label>
+						</div>
 						<Button className="w-full" type="submit">
 							Sign In
 						</Button>

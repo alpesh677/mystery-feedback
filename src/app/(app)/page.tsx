@@ -22,13 +22,13 @@ export default function Home() {
 	return (
 		<>
 			<div className="flex flex-col min-h-[80dvh]">
-				<section className="flex items-center justify-center px-4 py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-gray-800">
+				<section className="flex items-center justify-center px-4 py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-[#181818]">
 					<div className="container grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
 						<div className="space-y-4">
-							<h1 className="text-5xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+							<h1 className="text-5xl dark:text-[#35b7ff] font-bold tracking-tight sm:text-5xl md:text-6xl ">
 								Mystery Feedback
 							</h1>
-							<p className="text-gray-700 dark:text-gray-400 text-lg md:text-xl">
+							<p className="text-gray-700 dark:dark:text-[#35a9ff] text-lg md:text-xl">
 								Voice Your Thoughts, Maintain the Mystery.
 							</p>
 							<br />

@@ -26,6 +26,8 @@ import { signIn } from "next-auth/react";
 import Image from "next/image";
 import googleSvg from "../../../../public/google.svg";
 import githubSvg from "../../../../public/github.svg";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
 
 function SignUp() {
 	const { toast } = useToast();
@@ -34,6 +36,7 @@ function SignUp() {
 	const [usernameMessage, setUsernameMessage] = useState("");
 	const [isCheckingUsername, setIsCheckingUsername] = useState(false);
 	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [togglePassword, setTogglePassword] = useState(false)
 
 	const [debouncedUsername, setDebouncedUsername] = useDebounceValue(
 		username,
@@ -114,10 +117,10 @@ function SignUp() {
 	};
 
 	return (
-		<div className="flex justify-center items-center min-h-screen bg-gray-800">
-			<div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
+		<div className="flex justify-center items-center min-h-screen bg-gray-200 dark:bg-[#181818]">
+			<div className="w-full max-w-md p-8 space-y-5 bg-white dark:bg-[#212121] rounded-lg shadow-md">
 				<div className="text-center">
-					<h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
+					<h1 className="text-4xl dark:text-sky-500 font-extrabold tracking-tight lg:text-5xl mb-6">
 						Join Mystery Message
 					</h1>
 					<p className="mb-4">
@@ -137,6 +140,7 @@ function SignUp() {
 									<FormLabel>Username</FormLabel>
 									<FormControl>
 										<Input
+										className="dark:bg-gray-300"
 											placeholder="username"
 											{...field}
 											onChange={(e) => {
@@ -172,6 +176,7 @@ function SignUp() {
 									<FormLabel>Email</FormLabel>
 									<FormControl>
 										<Input
+											className="dark:bg-gray-300"
 											type="email"
 											placeholder="email"
 											{...field}
@@ -189,7 +194,8 @@ function SignUp() {
 									<FormLabel>Password</FormLabel>
 									<FormControl>
 										<Input
-											type="password"
+											className="dark:bg-gray-300"
+											type={togglePassword ? "text" : "password"}
 											placeholder="password"
 											{...field}
 										/>
@@ -198,6 +204,15 @@ function SignUp() {
 								</FormItem>
 							)}
 						/>
+						<div className="flex items-center space-x-2">
+							<Checkbox
+								id="show-password"
+								onClick={()=>(
+									setTogglePassword(!togglePassword)
+								)}
+							/>
+							<Label htmlFor="show-password">Show Password {" "}</Label>
+						</div>
 						<Button
 							type="submit"
 							className="py-2 px-4 max-w-md flex justify-center items-center bg-black hover:bg-gray-700 focus:ring-gray-500 focus:ring-offset-gray-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"

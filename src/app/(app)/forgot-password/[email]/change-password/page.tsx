@@ -16,8 +16,10 @@ import axios, { AxiosError } from "axios";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import resetPassword from "../../../../../../public/Reset password-pana.svg";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Label } from "@/components/ui/label";
 
 interface passwordProp {
 	password: string;
@@ -27,6 +29,8 @@ export default function ChangePassword() {
 	const router = useRouter();
 	const params = useParams();
 	const { toast } = useToast();
+	const [togglePassword, setTogglePassword] = useState(false)
+
 
 	const form = useForm<passwordProp>({
 		defaultValues: {
@@ -46,8 +50,7 @@ export default function ChangePassword() {
 
 	async function onChangePassword(data: passwordProp) {
 		try {
-			console.log("password", data.password);
-			console.log("CPass", data.confirmPassword);
+
 			if (data.password !== data.confirmPassword) {
 				throw new Error("Password and confirm Password do not match");
 			}
@@ -76,7 +79,7 @@ export default function ChangePassword() {
 	}
 	return (
 		<div className="flex justify-center items-center min-h-[80vh]">
-			<div className="w-full max-w-4xl p-8 space-y-8 lg:space-y-0 lg:space-x-20 lg:flex lg:items-center">
+			<div className="w-full max-w-4xl p-8 space-y-5 lg:space-y-0 lg:space-x-20 lg:flex lg:items-center">
 				<Image
 					src={resetPassword}
 					width={370}
@@ -84,7 +87,7 @@ export default function ChangePassword() {
 					alt="Illustration"
 					className="mx-auto aspect-square overflow-hidden rounded-xl object-cover lg:order-first"
 				/>
-				<div className="w-full max-w-md space-y-8 lg:order-last">
+				<div className="w-full max-w-md space-y-2 lg:order-last">
 					<div className="text-center lg:text-left">
 						<h1 className="text-3xl font-bold tracking-tight text-gray-900">
 							Reset your password
@@ -107,7 +110,7 @@ export default function ChangePassword() {
 												className="pr-10"
 												id="new-password"
 												placeholder="Password"
-												type="password"
+												type={togglePassword ? "text" : "password"}
 												{...register("password", {
 													required:
 														"Password is required",
@@ -131,7 +134,7 @@ export default function ChangePassword() {
 												className="pr-10"
 												id="confirm-password"
 												placeholder="Confirm Password"
-												type="password"
+												type={togglePassword ? "text" : "password"}
 												{...register(
 													"confirmPassword",
 													{
@@ -152,6 +155,15 @@ export default function ChangePassword() {
 									</FormItem>
 								)}
 							/>
+							<div className="flex items-center space-x-2">
+							<Checkbox
+								id="show-password"
+								onClick={()=>(
+									setTogglePassword(!togglePassword)
+								)}
+							/>
+							<Label htmlFor="show-password">Show Password {" "}</Label>
+						</div>
 							<Button type="submit" className="w-full">
 								Submit
 							</Button>
