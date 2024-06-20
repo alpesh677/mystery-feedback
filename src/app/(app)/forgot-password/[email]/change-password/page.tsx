@@ -20,6 +20,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { Loader2 } from "lucide-react";
 
 interface passwordProp {
 	password: string;
@@ -29,6 +30,7 @@ export default function ChangePassword() {
 	const router = useRouter();
 	const params = useParams();
 	const { toast } = useToast();
+	const [isSubmitting, setIsSubmitting] = useState(false);
 	const [togglePassword, setTogglePassword] = useState(false)
 
 
@@ -50,7 +52,7 @@ export default function ChangePassword() {
 
 	async function onChangePassword(data: passwordProp) {
 		try {
-
+			setIsSubmitting(true)
 			if (data.password !== data.confirmPassword) {
 				throw new Error("Password and confirm Password do not match");
 			}
@@ -75,10 +77,11 @@ export default function ChangePassword() {
 				description: errorMessage,
 				variant: "destructive",
 			});
+			setIsSubmitting(false)
 		}
 	}
 	return (
-		<div className="flex justify-center items-center min-h-[80vh]">
+		<div className="flex justify-center items-center dark:bg-[#0d0d0d] min-h-[89vh]">
 			<div className="w-full max-w-4xl p-8 space-y-5 lg:space-y-0 lg:space-x-20 lg:flex lg:items-center">
 				<Image
 					src={resetPassword}
@@ -89,7 +92,7 @@ export default function ChangePassword() {
 				/>
 				<div className="w-full max-w-md space-y-2 lg:order-last">
 					<div className="text-center lg:text-left">
-						<h1 className="text-3xl font-bold tracking-tight text-gray-900">
+						<h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-300">
 							Reset your password
 						</h1>
 					</div>
@@ -164,8 +167,15 @@ export default function ChangePassword() {
 							/>
 							<Label htmlFor="show-password">Show Password {" "}</Label>
 						</div>
-							<Button type="submit" className="w-full">
-								Submit
+							<Button type="submit" className="w-full dark:bg-green-600 dark:hover:bg-green-700 dark:text-white">
+							{isSubmitting ? (
+								<>
+									<Loader2 className="mr-2 h-4 w-4 animate-spin" />{" "}
+									Please wait
+								</>
+							) : (
+								"Submit"
+							)}
 							</Button>
 						</form>
 					</Form>

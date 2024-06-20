@@ -74,3 +74,9 @@
       @apply bg-background text-foreground;
     }
   }
+
+@layer utilities {
+  .bg-gradient-to-b-blue {
+    background-image: linear-gradient(to bottom, #0ABCF9, #2C69D1);
+  }
+}

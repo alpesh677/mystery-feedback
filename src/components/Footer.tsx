@@ -6,7 +6,7 @@ import { Code } from 'lucide-react';
 export default function Footer() {
     const year = new Date().getFullYear();
   return (
-    <footer className='w-full border-t h-10 text-xs flex justify-center items-center absolute bottom-0'>
+    <footer className='w-full border-t h-10 text-xs dark:bg-black flex justify-center items-center absolute bottom-0'>
         <p>
         &copy; {year} Mystery Feedback. All rights reserved.
         <Link

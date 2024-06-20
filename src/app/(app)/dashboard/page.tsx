@@ -156,14 +156,14 @@ function UserDashboard() {
 	};
 
 	return (
-		<div className="my-8 mx-4 md:mx-4 lg:mx-auto p-6 bg-white rounded w-full max-w-6xl">
+		<div className="my-8 mx-4 md:mx-4 lg:mx-auto p-6 bg-white dark:bg-[#010101] rounded w-full max-w-6xl transition duration-500 ease-in-out">
 			<div className="flex lg:items-center justify-between max-md:flex-col">
 				<div>
-					<p className="text-2xl font-semibold text-black">
+					<p className="text-2xl font-semibold text-black dark:bg-clip-text dark:text-transparent dark:bg-gradient-to-b dark:from-neutral-50 dark:to-neutral-400">
 						Hello, <span className="italic font-bold">{username}</span>
 					</p>
 					<p className="text-sm text-gray-500 font-semibold">Welcome to </p>
-					<h1 className="text-4xl font-bold mb-4 mt-3 text-darker-turquoise">User Dashboard</h1>
+					<h1 className="text-4xl font-bold mb-4 mt-3 dark:text-green-500 text-darker-turquoise transition duration-300 ease-in">User Dashboard</h1>
 				</div>
 				<Image
 					src={dashboard}
@@ -182,11 +182,11 @@ function UserDashboard() {
 						type="text"
 						value={profileUrl}
 						disabled
-						className="input border-input w-full p-2 mr-2"
+						className="input border-input w-full p-2 mr-2 border rounded-lg"
 					/>
 
-					<Button onClick={copyToClipBoard}>Copy</Button>
-				</div>
+					<Button onClick={copyToClipBoard} className="dark:bg-sky-600 dark:text-white dark:hover:bg-sky-700 transition duration-300 ease-in-out">Copy</Button>
+				</div> 
 			</div>
 
 			<div className="mb-4">

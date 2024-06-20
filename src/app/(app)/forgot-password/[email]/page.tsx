@@ -19,16 +19,19 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import axios, { AxiosError } from "axios";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import enterOtp from "../../../../../public/Enter OTP-pana.svg";
 import * as z from "zod";
 import Image from "next/image";
+import { Loader2 } from "lucide-react";
 
 export default function ForgotPasswordOTP() {
 	const router = useRouter();
 	const params = useParams();
 	const { toast } = useToast();
+	const [isSubmitting, setIsSubmitting] = useState(false);
+
 	const form = useForm<z.infer<typeof verifySchema>>({
 		resolver: zodResolver(verifySchema),
 	});
@@ -40,6 +43,7 @@ export default function ForgotPasswordOTP() {
 		const mail = decodeURIComponent(emailParam);
 		console.log(mail);
 		try {
+			setIsSubmitting(true)
 			const response = await axios.post("/api/forgot-password-verify", {
 				email: params.email,
 				code: data.code,
@@ -56,11 +60,12 @@ export default function ForgotPasswordOTP() {
 				description: errorMessage,
 				variant: "destructive",
 			});
+			setIsSubmitting(false)
 		}
 	}
 
 	return (
-		<div className="flex min-h-[90vh] items-center justify-center px-4 py-12 md:py-24 lg:py-32 bg-white dark:bg-gray-950">
+		<div className="flex min-h-[90vh] items-center justify-center px-4 py-12 md:py-24 lg:py-32 bg-white dark:bg-[#0d0d0d]">
 			<div className="container grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
 				<Image
 					src={enterOtp}
@@ -70,11 +75,11 @@ export default function ForgotPasswordOTP() {
 					className="mx-auto aspect-square overflow-hidden rounded-xl object-cover"
 				/>
 				<div>
-                <div className="text-center lg:text-left mb-3">
-						<h1 className="text-4xl font-bold tracking-tight text-gray-900">
+                <div className="text-center lg:text-left mb-3 ">
+						<h1 className="text-4xl font-bold tracking-tight dark:text-gray-300 text-gray-900">
                         Verify your account
 						</h1>
-						<p className="mt-2 text-base text-gray-600">
+						<p className="mt-2 text-base dark:text-gray-300 text-gray-600">
                         Enter the 6-digit code sent to your email.
 						</p>
 					</div>
@@ -131,7 +136,14 @@ export default function ForgotPasswordOTP() {
 								/>
 							</div>
 							<Button type="submit" className="w-full">
-								Verify
+							{isSubmitting ? (
+								<>
+									<Loader2 className="mr-2 h-4 w-4 animate-spin" />{" "}
+									Please wait
+								</>
+							) : (
+								"Verify"
+							)}
 							</Button>
 						</form>
 					</Form>

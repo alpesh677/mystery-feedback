@@ -117,8 +117,8 @@ function SignUp() {
 	};
 
 	return (
-		<div className="flex justify-center items-center min-h-screen bg-gray-200 dark:bg-[#181818]">
-			<div className="w-full max-w-md p-8 space-y-5 bg-white dark:bg-[#212121] rounded-lg shadow-md">
+		<div className="flex justify-center items-center min-h-screen bg-gray-200 dark:bg-[#010101]">
+			<div className="w-full max-w-lg p-8 space-y-5 bg-white dark:bg-[#0d0d0d] rounded-lg shadow-md">
 				<div className="text-center">
 					<h1 className="text-4xl dark:text-sky-500 font-extrabold tracking-tight lg:text-5xl mb-6">
 						Join Mystery Message
@@ -140,7 +140,7 @@ function SignUp() {
 									<FormLabel>Username</FormLabel>
 									<FormControl>
 										<Input
-										className="dark:bg-gray-300"
+										className="dark:bg-gray-300 dark:text-black dark:font-semibold dark:outline-blue-300"
 											placeholder="username"
 											{...field}
 											onChange={(e) => {
@@ -151,7 +151,7 @@ function SignUp() {
 									</FormControl>
 									<FormDescription>
 										{isCheckingUsername && (
-											<Loader2 className="text-black ml-2 w-8 h-8 animate-spin" />
+											<Loader2 className="text-black dark:text-white ml-2 w-8 h-8 animate-spin" />
 										)}
 										<span
 											className={`text-sm font-semibold ${
@@ -176,7 +176,7 @@ function SignUp() {
 									<FormLabel>Email</FormLabel>
 									<FormControl>
 										<Input
-											className="dark:bg-gray-300"
+											className="dark:bg-gray-300 dark:text-black dark:font-semibold dark:outline-blue-300"
 											type="email"
 											placeholder="email"
 											{...field}
@@ -194,7 +194,7 @@ function SignUp() {
 									<FormLabel>Password</FormLabel>
 									<FormControl>
 										<Input
-											className="dark:bg-gray-300"
+											className="dark:bg-gray-300 dark:text-black dark:font-semibold dark:outline-blue-300"
 											type={togglePassword ? "text" : "password"}
 											placeholder="password"
 											{...field}
@@ -215,7 +215,7 @@ function SignUp() {
 						</div>
 						<Button
 							type="submit"
-							className="py-2 px-4 max-w-md flex justify-center items-center bg-black hover:bg-gray-700 focus:ring-gray-500 focus:ring-offset-gray-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
+							className="py-2 px-4 max-w-md flex justify-center items-center bg-black dark:bg-green-600 dark:hover:bg-green-700 hover:bg-gray-700 focus:ring-gray-500 focus:ring-offset-gray-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
 							disabled={isSubmitting}
 						>
 							{isSubmitting ? (

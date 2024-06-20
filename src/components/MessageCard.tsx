@@ -51,7 +51,7 @@ function MessageCard({ message, onMessageDelete }: MessageCardProps) {
 					<CardTitle>{message.content}</CardTitle>
 					<AlertDialog>
 						<AlertDialogTrigger asChild>
-                            <Button className="p-2 h-8 w-10" variant={"destructive"}>
+                            <Button className="p-2 h-8 w-10 dark:bg-red-700" variant={"destructive"}>
                                 <X className="h-5 w-5"/>
                             </Button>
                         </AlertDialogTrigger>
@@ -66,8 +66,8 @@ function MessageCard({ message, onMessageDelete }: MessageCardProps) {
 								</AlertDialogDescription>
 							</AlertDialogHeader>
 							<AlertDialogFooter>
-								<AlertDialogCancel>Cancel</AlertDialogCancel>
-								<AlertDialogAction onClick={handleDeleteConfirm}>Continue</AlertDialogAction>
+								<AlertDialogCancel className="dark:bg-white dark:text-black">Cancel</AlertDialogCancel>
+								<AlertDialogAction onClick={handleDeleteConfirm} className="bg-red-600 dark:text-white">Continue</AlertDialogAction>
 							</AlertDialogFooter>
 						</AlertDialogContent>
 					</AlertDialog>

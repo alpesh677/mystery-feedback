@@ -22,10 +22,10 @@ export default function Home() {
 	return (
 		<>
 			<div className="flex flex-col min-h-[80dvh]">
-				<section className="flex items-center justify-center px-4 py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-[#181818]">
+				<section className="flex items-center justify-center px-4 py-12 md:py-24 lg:py-32 bg-gray-100 dark:bg-[#0e0e0e] transition duration-500 ease-in-out">
 					<div className="container grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
 						<div className="space-y-4">
-							<h1 className="text-5xl dark:text-[#35b7ff] font-bold tracking-tight sm:text-5xl md:text-6xl ">
+							<h1 className="text-5xl dark:bg-clip-text dark:text-transparent dark:bg-gradient-to-b-blue font-bold tracking-tight sm:text-5xl md:text-6xl ">
 								Mystery Feedback
 							</h1>
 							<p className="text-gray-700 dark:dark:text-[#35a9ff] text-lg md:text-xl">
@@ -49,14 +49,14 @@ export default function Home() {
 							<div className="flex flex-col gap-2 sm:flex-row justify-center items-center">
 								<Link
 									href={"/sign-up"}
-									className="inline-flex h-10 items-center justify-center rounded-md bg-gray-900 px-8 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
+									className="inline-flex h-10 items-center justify-center rounded-md bg-gray-900 px-8 text-sm font-medium text-gray-50 shadow  hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300 transition duration-500 ease-in-out"
 									prefetch={false}
 								>
 									Sign Up
 								</Link>
 								<Link
 									href={"/sign-in"}
-									className="inline-flex h-10 items-center justify-center rounded-md border border-gray-200 bg-white px-8 text-sm font-medium shadow-sm transition-colors hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800  dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus-visible:ring-gray-300"
+									className="inline-flex h-10 items-center justify-center rounded-md border border-gray-200 bg-white px-8 text-sm font-medium shadow-sm  hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800  dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus-visible:ring-gray-300 transition duration-500 ease-in-out"
 									prefetch={false}
 								>
 									Log In
@@ -229,7 +229,7 @@ export default function Home() {
 						</Carousel>
 					</div>
 				</section>
-				<footer className="bg-black text-white dark:bg-gray-800 py-6 px-4 md:px-6">
+				<footer className="bg-black text-white dark:bg-black py-6 px-4 md:px-6">
 					<div className="container flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
 						<p className="text-white dark:text-gray-400 text-sm text-center md:text-left">
 							&copy; {year} Mystery Feedback. All rights reserved.

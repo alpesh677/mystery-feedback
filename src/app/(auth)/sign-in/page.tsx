@@ -22,10 +22,12 @@ import githubSvg from "../../../../public/github.svg";
 import { useState } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { Loader2 } from "lucide-react";
 
 const SignInForm = () => {
 	const router = useRouter();
-	const [togglePassword, setTogglePassword] = useState(false)
+	const [togglePassword, setTogglePassword] = useState(false);
+	const [isSubmitting, setIsSubmitting] = useState(false);
 
 
 	const form = useForm<z.infer<typeof signInSchema>>({
@@ -39,6 +41,7 @@ const SignInForm = () => {
 	const { toast } = useToast();
 
 	const onSubmit = async (data: z.infer<typeof signInSchema>) => {
+		setIsSubmitting(true)
 		const result = await signIn("credentials", {
 			redirect: false,
 			identifier: data.identifier,
@@ -51,9 +54,11 @@ const SignInForm = () => {
 				description: result.error,
 				variant: "destructive",
 			});
+			setIsSubmitting(false)
 		}
 
 		if (result?.url) {
+			setIsSubmitting(false)
 			router.replace("/dashboard");
 		}
 	};
@@ -69,12 +74,11 @@ const SignInForm = () => {
 		}
 	};
 
-
 	return (
-		<div className="flex justify-center items-center min-h-screen bg-gray-200 dark:dark:bg-[#181818]">
-			<div className="w-full max-w-md p-8 space-y-8 dark:bg-[#212121] bg-white rounded-lg shadow-md">
+		<div className="flex justify-center items-center min-h-screen bg-gray-200 dark:bg-[#010101]">
+			<div className="w-full max-w-lg p-8 space-y-8 dark:bg-[#0d0d0d] bg-white rounded-lg shadow-md">
 				<div className="text-center">
-					<h1 className="text-4xl font-extrabold dark:text-sky-500 tracking-tight lg:text-5xl mb-6">
+					<h1 className="text-4xl font-extrabold dark:text-[#35b7ff] tracking-tight lg:text-5xl mb-6">
 						Welcome Back to True Feedback
 					</h1>
 					<p className="mb-4">
@@ -92,7 +96,10 @@ const SignInForm = () => {
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel>Email/Username</FormLabel>
-									<Input {...field} className="dark:bg-gray-300" />
+									<Input
+										{...field}
+										className="dark:bg-gray-300 dark:text-black dark:font-semibold dark:outline-blue-300"
+									/>
 									<FormMessage />
 								</FormItem>
 							)}
@@ -103,8 +110,13 @@ const SignInForm = () => {
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel>Password</FormLabel>
-									<Input className="dark:bg-gray-300" type={togglePassword ? "text" : "password"} 
-									{...field} />
+									<Input
+										className="dark:bg-gray-300  dark:text-black dark:font-semibold dark:outline-blue-300"
+										type={
+											togglePassword ? "text" : "password"
+										}
+										{...field}
+									/>
 									<FormMessage />
 								</FormItem>
 							)}
@@ -112,14 +124,31 @@ const SignInForm = () => {
 						<div className="flex items-center space-x-2">
 							<Checkbox
 								id="show-password"
-								onClick={()=>(
+								onClick={() =>
 									setTogglePassword(!togglePassword)
-								)}
+								}
 							/>
-							<Label htmlFor="show-password">Show Password {" "}</Label>
+							<Label htmlFor="show-password">
+								Show Password{" "}
+							</Label>
 						</div>
-						<Button className="w-full" type="submit">
-							Sign In
+						<p>
+							<Link
+								className="text-sm underline"
+								href={"/forgot-password"}
+							>
+								Forgot password
+							</Link>
+						</p>
+						<Button className="w-full dark:bg-sky-600 dark:hover:bg-sky-700 py-2 px-4 max-w-md flex justify-center items-center bg-black  hover:bg-gray-700 focus:ring-gray-500 focus:ring-offset-gray-200 text-white transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg" type="submit" disabled= {isSubmitting}>
+						{isSubmitting ? (
+								<>
+									<Loader2 className="mr-2 h-4 w-4 animate-spin" />{" "}
+									Please wait
+								</>
+							) : (
+								"Sign In"
+							)}
 						</Button>
 					</form>
 				</Form>
@@ -128,7 +157,7 @@ const SignInForm = () => {
 						Not a member yet?{" "}
 						<Link
 							href={"/sign-up"}
-							className="text-blue-600 hover:text-blue-800"
+							className="text-blue-600 dark:text-sky-300 hover:text-blue-800"
 						>
 							Sign up
 						</Link>
@@ -136,9 +165,7 @@ const SignInForm = () => {
 				</div>
 				<div className="flex items-center">
 					<hr className="flex-grow border-t border-gray-300" />
-					<span className="px-3 text-black font-bold">
-						OR
-					</span>
+					<span className="px-3 text-black font-bold">OR</span>
 					<hr className="flex-grow border-t border-gray-300" />
 				</div>
 				<div className="flex flex-col space-y-3">
