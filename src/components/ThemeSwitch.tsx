@@ -26,7 +26,7 @@ export default function ThemeSwitch() {
 	if (resolvedTheme === "dark") {
 		return (
 			<div
-				className="p-2 cursor-pointer rounded-full font-outfit text-blue-900 dark:text-blue-100 bg-blue-100 dark:bg-blue-900/20 dark:hover:bg-blue-900/30 hover:bg-blue-200 transition duration-700 ease-in-out my-auto"
+				className="p-2 cursor-pointer rounded-full font-outfit text-blue-900 dark:text-blue-950 bg-blue-100 dark:bg-white dark:hover:bg-blue-300 hover:bg-blue-200 transition duration-700 ease-in-out my-auto"
 				onClick={() => setTheme("light")}
 			>
 				<svg
