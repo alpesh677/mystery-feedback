@@ -14,11 +14,12 @@ import websiteCreator from "../../../public/Website Creator.svg";
 import innovation from "../../../public/Innovation-pana.svg";
 import Autoplay from "embla-carousel-autoplay";
 import Image from "next/image";
-import Footer from "@/components/Footer";
-import { Code } from "lucide-react";
+import { useSession } from "next-auth/react";
 
 export default function Home() {
 	const year = new Date().getFullYear();
+	const { data: session } = useSession();
+	const user = session?.user;
 	return (
 		<>
 			<div className="flex flex-col min-h-[80dvh]">
@@ -46,22 +47,25 @@ export default function Home() {
 									responses without revealing your identity.
 								</p>
 							</div>
-							<div className="flex flex-col gap-2 sm:flex-row justify-center items-center">
-								<Link
-									href={"/sign-up"}
-									className="inline-flex h-10 items-center justify-center rounded-md bg-gray-900 px-8 text-sm font-medium text-gray-50 shadow  hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300 transition duration-500 ease-in-out"
-									prefetch={false}
-								>
-									Sign Up
-								</Link>
-								<Link
-									href={"/sign-in"}
-									className="inline-flex h-10 items-center justify-center rounded-md border border-gray-200 bg-white px-8 text-sm font-medium shadow-sm  hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800  dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus-visible:ring-gray-300 transition duration-500 ease-in-out"
-									prefetch={false}
-								>
-									Log In
-								</Link>
-							</div>
+							{!session && (
+								<div className="flex flex-col gap-2 sm:flex-row justify-center items-center">
+									<Link
+										href={"/sign-up"}
+										className="inline-flex h-10 items-center justify-center rounded-md bg-gray-900 px-8 text-sm font-medium text-gray-50 shadow  hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300 transition duration-500 ease-in-out"
+										prefetch={false}
+									>
+										Sign Up
+									</Link>
+									<Link
+										href={"/sign-in"}
+										hidden={session ? true : false}
+										className="inline-flex h-10 items-center justify-center rounded-md border border-gray-200 bg-white px-8 text-sm font-medium shadow-sm  hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800  dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus-visible:ring-gray-300 transition duration-500 ease-in-out"
+										prefetch={false}
+									>
+										Log In
+									</Link>
+								</div>
+							)}
 						</div>
 						<Image
 							src={connectedWorld}

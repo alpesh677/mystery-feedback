@@ -120,7 +120,7 @@ export default function ForgotPassword() {
 					<div className="text-center lg:text-left text-sm text-gray-600">
 						<Link
 							href={"/sign-up"}
-							className="font-medium text-gray-900 hover:underline"
+							className="font-medium text-gray-900 hover:underline dark:text-gray-200"
 						>
 							Back to Signup
 						</Link>

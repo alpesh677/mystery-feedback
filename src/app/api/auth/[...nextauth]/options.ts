@@ -124,14 +124,6 @@ export const authOptions: NextAuthOptions = {
 						await dbConnect();
 						let foundUser = await UserModel.findOne({ email });
 
-						if (foundUser) {
-							console.error(
-								"User already exists with email:",
-								email,
-							);
-							return false;
-						}
-
 						if (!foundUser) {
 							const random = Math.floor(
 								100 + Math.random() * 900,
@@ -163,7 +155,7 @@ export const authOptions: NextAuthOptions = {
 			}
 			return true;
 		},
-		async redirect({ baseUrl }) {
+		async redirect({ url,baseUrl }) {
 			return baseUrl;
 		},
 	},

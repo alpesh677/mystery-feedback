@@ -64,10 +64,13 @@ const SignInForm = () => {
 	};
 
 	const [errorMessage, setErrorMessage] = useState("");
-	const handleSignIn = async (provider: string) => {
-		const result = await signIn(provider, { redirect: false });
-
-		if (!result) {
+	const handleSignIn = async (provider:any) => {
+		console.log("in method")
+		const result= await signIn(provider, { redirect: false });
+		console.log("past the method")
+		console.log("result on sign in :",result)
+		if (result) {
+			
 			setErrorMessage("User already exists with this email.");
 		} else {
 			setErrorMessage("");
@@ -165,7 +168,7 @@ const SignInForm = () => {
 				</div>
 				<div className="flex items-center">
 					<hr className="flex-grow border-t border-gray-300" />
-					<span className="px-3 text-black font-bold">OR</span>
+					<span className="px-3 text-black font-bold dark:text-gray-200">OR</span>
 					<hr className="flex-grow border-t border-gray-300" />
 				</div>
 				<div className="flex flex-col space-y-3">

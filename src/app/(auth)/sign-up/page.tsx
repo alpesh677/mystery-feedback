@@ -36,7 +36,7 @@ function SignUp() {
 	const [usernameMessage, setUsernameMessage] = useState("");
 	const [isCheckingUsername, setIsCheckingUsername] = useState(false);
 	const [isSubmitting, setIsSubmitting] = useState(false);
-	const [togglePassword, setTogglePassword] = useState(false)
+	const [togglePassword, setTogglePassword] = useState(false);
 
 	const [debouncedUsername, setDebouncedUsername] = useDebounceValue(
 		username,
@@ -106,11 +106,16 @@ function SignUp() {
 
 	const [errorMessage, setErrorMessage] = useState("");
 
-	const handleSignIn = async (provider: string) => {
+	const handleSignIn = async (provider:any) => {
 		const result = await signIn(provider, { redirect: false });
 
-		if (!result) {
-			setErrorMessage("User already exists with this email.");
+		if (result?.error) {
+			// Assuming the error message contains information about the user already existing
+			if (result.error.includes("User already exists")) {
+				setErrorMessage("User already exists with this email.");
+			} else {
+				setErrorMessage("An error occurred during sign-in.");
+			}
 		} else {
 			setErrorMessage("");
 		}
@@ -140,7 +145,7 @@ function SignUp() {
 									<FormLabel>Username</FormLabel>
 									<FormControl>
 										<Input
-										className="dark:bg-gray-300 dark:text-black dark:font-semibold dark:outline-blue-300"
+											className="dark:bg-gray-300 dark:text-black dark:font-semibold dark:outline-blue-300"
 											placeholder="username"
 											{...field}
 											onChange={(e) => {
@@ -195,7 +200,11 @@ function SignUp() {
 									<FormControl>
 										<Input
 											className="dark:bg-gray-300 dark:text-black dark:font-semibold dark:outline-blue-300"
-											type={togglePassword ? "text" : "password"}
+											type={
+												togglePassword
+													? "text"
+													: "password"
+											}
 											placeholder="password"
 											{...field}
 										/>
@@ -207,11 +216,13 @@ function SignUp() {
 						<div className="flex items-center space-x-2">
 							<Checkbox
 								id="show-password"
-								onClick={()=>(
+								onClick={() =>
 									setTogglePassword(!togglePassword)
-								)}
+								}
 							/>
-							<Label htmlFor="show-password">Show Password {" "}</Label>
+							<Label htmlFor="show-password">
+								Show Password{" "}
+							</Label>
 						</div>
 						<Button
 							type="submit"
@@ -231,7 +242,7 @@ function SignUp() {
 				</Form>
 				<div className="flex items-center">
 					<hr className="flex-grow border-t border-gray-300" />
-					<span className="px-3 text-black font-bold">
+					<span className="px-3 text-black font-bold dark:text-gray-200">
 						OR
 					</span>
 					<hr className="flex-grow border-t border-gray-300" />
