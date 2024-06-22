@@ -247,7 +247,7 @@ export default function Home() {
 								Contact Me
 							</Link>
 							<Link
-								href="https://github.com/alpesh677"
+								href="https://github.com"
 								target="_blank"
 								className="text-white dark:text-gray-400  dark:hover:text-gray-50 transition-colors"
 							>
@@ -264,7 +264,7 @@ export default function Home() {
 							</Link>
 							<Link
 								target="_blank"
-								href="https://x.com/alpesh_baria677"
+								href="https://x.com"
 								className="text-white dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-50 transition-colors"
 								prefetch={false}
 							>
