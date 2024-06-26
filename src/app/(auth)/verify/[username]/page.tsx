@@ -3,12 +3,14 @@
 import { Button } from "@/components/ui/button";
 import {
 	Form,
+	FormControl,
 	FormField,
 	FormItem,
 	FormLabel,
 	FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 import { useToast } from "@/components/ui/use-toast";
 import { verifySchema } from "@/schemas/verifySchema";
 import { ApiResponse } from "@/types/ApiResponse";
@@ -52,13 +54,13 @@ const VerifyAccount = () => {
 		}
 	};
 	return (
-		<div className="flex justify-center items-center min-h-screen bg-gray-100">
-			<div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
+		<div className="flex justify-center items-center min-h-screen bg-gray-100 dark:bg-[#010101]">
+			<div className="w-full max-w-md p-8 space-y-8 bg-white  dark:bg-[#0d0d0d] dark:bg-clip-text dark:text-transparent dark:bg-gradient-to-b dark:from-neutral-50 dark:to-neutral-400 rounded-lg shadow-md border border-sky-500">
 				<div className="text-center">
 					<h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl mb-6">
 						Verify Your Account
 					</h1>
-					<p className="mb-4">
+					<p className="mb-4 dark:text-gray-100">
 						Enter the verification code sent to your email
 					</p>
 				</div>
@@ -72,8 +74,41 @@ const VerifyAccount = () => {
 							control={form.control}
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel>Verification Code</FormLabel>
-									<Input {...field} />
+									<FormLabel className="dark:text-gray-100">Verification Code</FormLabel>
+									<FormControl>
+										<InputOTP
+											maxLength={6}
+											{...field}
+											className="text-black"
+										>
+											<InputOTPGroup>
+												<InputOTPSlot
+													index={0}
+													className="bg-black/70 text-white"
+												/>
+												<InputOTPSlot
+													index={1}
+													className="bg-black/70 text-white"
+												/>
+												<InputOTPSlot
+													index={2}
+													className="bg-black/70 text-white"
+												/>
+												<InputOTPSlot
+													index={3}
+													className="bg-black/70 text-white"
+												/>
+												<InputOTPSlot
+													index={4}
+													className="bg-black/70 text-white"
+												/>
+												<InputOTPSlot
+													index={5}
+													className="bg-black/70 text-white"
+												/>
+											</InputOTPGroup>
+										</InputOTP>
+									</FormControl>
 									<FormMessage />
 								</FormItem>
 							)}

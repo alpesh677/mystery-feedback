@@ -118,7 +118,7 @@ export const authOptions: NextAuthOptions = {
 				profile
 			) {
 				const { email, name } = profile;
-				// console.log("Github profile : ", profile);
+				console.log("Github profile : ", profile);
 				if (email?.endsWith("@gmail.com")) {
 					try {
 						await dbConnect();
